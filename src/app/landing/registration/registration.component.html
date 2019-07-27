@@ -1,0 +1,115 @@
+
+<div class="content">
+  
+  <mat-card>
+    <mat-card-content>
+  
+      <h2 class="quote">Registration</h2>
+      
+      <form (ngSubmit)="onSubmit()" [formGroup]="signupForm">
+        
+        <!-- block 1 -->
+        <div class="block1" *ngIf="isShow">
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title">
+            <mat-error *ngIf="titleErr?.required">This is required.</mat-error>
+          <mat-error *ngIf="titleErr?.minlength">Invalid title.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput type="text" formControlName="firstname">
+            <mat-error *ngIf="firstnameErr?.required">This is required.</mat-error>
+            <mat-error *ngIf="firstnameErr?.minlength">Invalid name.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput type="text" formControlName="lastname">
+            <mat-error *ngIf="lastnameErr?.required">This is required.</mat-error>
+            <mat-error *ngIf="lastnameErr?.minlength">Invalid name.</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <!-- block 2 -->
+        <div class="block1s" *ngIf="!isShow">
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput type="text" formControlName="firstname">
+            <mat-error *ngIf="firstnameErr?.required">This is required.</mat-error>
+            <mat-error *ngIf="firstnameErr?.minlength">Invalid name.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput type="text" formControlName="lastname">
+            <mat-error *ngIf="lastnameErr?.required">This is required.</mat-error>
+            <mat-error *ngIf="lastnameErr?.minlength">Invalid name.</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <!-- below -->
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>Email address</mat-label>
+          <input matInput type="email" formControlName="email">
+          <mat-error *ngIf="emailErr?.required">This is required.</mat-error>
+          <mat-error *ngIf="emailErr?.email">Invalid email.</mat-error>
+        </mat-form-field>
+        
+        <div class="block2">
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="passwordErr?.required">This is required.</mat-error>
+            <mat-error *ngIf="passwordErr?.minlength">Password too short.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirm">
+            <mat-error *ngIf="confirmErr?.required">This is required.</mat-error>
+          <mat-error *ngIf="!confirmErr?.required && confirmErr?.isNotMatched">Password not matched.</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <!-- radio -->
+        <mat-radio-group formControlName="radio" (change)="onRadioChange()">
+          <mat-radio-button [value]="true" checked="true">Professor</mat-radio-button>
+          <mat-radio-button [value]="false">Student</mat-radio-button>
+        </mat-radio-group>
+        
+        <!-- access code         -->
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>Access code</mat-label>
+          <input matInput type="text" formControlName="code">
+          <mat-icon matSuffix *ngIf="codeStat === 'PENDING'">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+              <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+              </path>
+            </svg>
+          </mat-icon>
+          <mat-icon matSuffix *ngIf="codeStat === 'VALID'">
+            <app-check></app-check>
+          </mat-icon>
+          <mat-error *ngIf="codeErr?.required">This is required.</mat-error>
+          <mat-error *ngIf="codeErr?.minlength">Invalid access code.</mat-error>
+          <mat-error *ngIf="codeErr?.maxlength">Invalid access code.</mat-error>
+          <mat-error *ngIf="codeErr?.isTaken">Access code for {{ option === 'student' ? 'professor' : 'student' }}, does not exists or already taken.</mat-error>
+        </mat-form-field>
+        
+        <div class="button-container">
+          <button mat-icon-button routerLink="/">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          
+          <button mat-raised-button color="accent">REGISTER</button>
+        </div>
+        
+      </form>
+      
+    </mat-card-content>
+  </mat-card>
+  
+</div>

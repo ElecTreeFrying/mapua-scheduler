@@ -1,0 +1,69 @@
+
+
+  <div class="content">
+    
+    <form class="left" (ngSubmit)="onSubmit()" [formGroup]="updateForm">
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="day">
+          <mat-option *ngFor="let day of daysSchedule" [value]="day">{{ day }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="dayErr?.required">This is required.</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Time</mat-label>
+        <mat-select formControlName="time">
+          <mat-optgroup *ngFor="let time of times" [label]="time.name">
+            <mat-option *ngFor="let schedule of time.group" [value]="schedule">
+              {{ schedule }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+        <mat-error *ngIf="timeErr?.required">This is required.</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Course</mat-label>
+        <input matInput type="text" formControlName="course">
+        <mat-error *ngIf="courseErr?.required">This is required.</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Section</mat-label>
+        <input matInput type="text" formControlName="section">
+        <mat-error *ngIf="sectionErr?.required">This is required.</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Room</mat-label>
+        <input matInput type="text" formControlName="room">
+        <mat-error *ngIf="roomErr?.required">This is required.</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="accent">ADD</button>
+      
+    </form>
+    
+    <div class="right">
+      
+      <p>Schedule queue</p>
+      
+      <mat-divider></mat-divider>
+      
+      <div data-simplebar class="right-content">
+        
+        <mat-card matRipple *ngFor="let sched of scheduleQueue | async">
+          <mat-card-content>
+            
+            <p>{{ sched?.course }}</p>
+            <p>{{ sched?.section }} / {{ sched?.room }}</p>
+            <p>{{ sched?.label }}</p>
+            
+          </mat-card-content>
+        </mat-card>
+        
+      </div>
+      
+  </div>

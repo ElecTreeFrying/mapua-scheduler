@@ -1,0 +1,50 @@
+
+.content {
+  display: flex;
+  height: 100vh;
+  background: rgb(240, 240, 240);
+  
+  .quote {
+    margin-bottom: 16px;
+  }
+  
+  .mat-card {
+    width: 300px;
+    margin: auto;
+    
+    .mat-form-field {
+      width: 100%;
+    }
+    
+    .mat-radio-button:first-child {
+      margin-right: 40px;
+    }
+    
+    .link {
+      position: absolute;
+      color: rgb(0, 47, 189);
+      // font-weight: bold;
+      margin: 0;
+      cursor: pointer;
+      transform: translateY(20px);
+    }
+    
+    .link:hover {
+      color: rgb(143, 168, 246);
+      text-decoration: underline;
+    }
+    
+    .button-container {
+      display: flex;
+      
+      .mat-raised-button {
+        margin: 16px 0 0 auto;
+      }
+    }
+    
+    #progress {
+      margin: 0 -16px -16px -16px;
+    }
+    
+  }
+}

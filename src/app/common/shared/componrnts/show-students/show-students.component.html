@@ -1,0 +1,39 @@
+
+<div class="content" data-simplebar>
+  
+  <p class="quote">Consultations</p>
+  
+  <mat-divider></mat-divider>
+
+  <mat-accordion [multi]="false">
+    <mat-expansion-panel *ngFor="let data of students | checkIndicatorStudents: [ _data ] | async">
+    <!-- <mat-expansion-panel *ngFor="let data of students"> -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ data?.groupname }}</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <button mat-icon-button matTooltip="accept" *ngIf="data?.status === 'pending'" (click)="accept(data)">
+        <mat-icon>check</mat-icon>
+      </button>
+
+      <button mat-icon-button matTooltip="reject" *ngIf="data?.status === 'pending'" (click)="rejectRemove(data, true)">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <button mat-icon-button matTooltip="remove" *ngIf="data?.status === 'accepted'" matDialogClose (click)="rejectRemove(data, false)">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <mat-nav-list>
+        <mat-list-item *ngFor="let student of data?.students">
+          {{ student?.firstname }} {{ student?.lastname }}
+        </mat-list-item>
+      </mat-nav-list>
+      <p><em><strong>Purpose:</strong></em> {{ data?.purpose }}</p>
+      
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+</div>

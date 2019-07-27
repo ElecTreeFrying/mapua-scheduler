@@ -1,0 +1,124 @@
+
+<div class="content">
+  
+  <form (ngSubmit)="onSubmit()" [formGroup]="update">
+    
+    <div formGroupName="set1">
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Month</mat-label>
+        <mat-select formControlName="month">
+          <mat-option *ngFor="let month of monthSchedule" [value]="month">{{ month }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="start">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <span> to </span>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="end">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div formGroupName="set2">
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Month</mat-label>
+        <mat-select formControlName="month">
+          <mat-option *ngFor="let month of monthSchedule" [value]="month">{{ month }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="start">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <span> to </span>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="end">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div formGroupName="set3">
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Month</mat-label>
+        <mat-select formControlName="month">
+          <mat-option *ngFor="let month of monthSchedule" [value]="month">{{ month }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="start">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <span> to </span>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="end">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div formGroupName="set4">
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Month</mat-label>
+        <mat-select formControlName="month">
+          <mat-option *ngFor="let month of monthSchedule" [value]="month">{{ month }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="start">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <span> to </span>
+      
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Day</mat-label>
+        <mat-select formControlName="end">
+          <mat-option *ngFor="let date of dates" [value]="date">{{ date }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div class="noOfMonths">
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>#</mat-label>
+        <input matInput type="text" [value]="number" disabled>
+      </mat-form-field>
+    </div>
+    
+    <p>* total days must be 77</p>
+    <p>* months should be chronological</p>
+      
+    <div class="buttons">
+      <button mat-raised-button type="submit" color="primary" (click)="onSubmit()" type="button">SET</button>
+      <button mat-raised-button type="button" matDialogClose color="warn">CANCEL</button>
+    </div>
+    
+  </form>
+  
+  
+</div>

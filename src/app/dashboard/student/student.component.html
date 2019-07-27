@@ -1,0 +1,77 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <div class="wrap">
+    
+    <mat-toolbar color="primary">
+      
+      <span>Mapúa Scheduler</span>
+      
+      <button mat-icon-button id="toolbar-btn">
+        <mat-icon>notifications_none</mat-icon>
+      </button>
+      
+      <button mat-icon-button>
+        <mat-icon>person</mat-icon>
+      </button>
+      
+      <button mat-icon-button [matMenuTriggerFor]="menuToolbar">
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <mat-menu xPosition="before" #menuToolbar="matMenu">
+        <button mat-menu-item disabled>blank</button>
+        <button mat-menu-item disabled>blank</button>
+        <button mat-menu-item (click)="auth.signout()">Logout</button>
+      </mat-menu>
+      
+    </mat-toolbar>
+    
+  </div>
+</mat-toolbar>
+
+<div class="wrap">
+  
+  <mat-form-field color="accent">
+    <mat-label>Search schedule</mat-label>
+    <mat-select [(value)]="professor">
+      <mat-option *ngFor="let user of users" [value]="user">
+        {{ user?.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary" (click)="onSearch(professor)" matTooltip="double click to search professor">SEARCH</button>
+  
+  <mat-divider></mat-divider>
+  
+  <div class="week-container">
+    
+    <div matRipple class="weeks mat-elevation-z5" *ngFor="let week of weeks">
+      <p>{{ week }}</p>
+    </div>
+    
+  </div>
+  
+  <div class="day-container">
+    
+    <div matRipple class="days mat-elevation-z5" *ngFor="let day of days">
+      <p>{{ day }}</p>
+    </div>
+    
+  </div>
+  
+  <div class="block-container">
+    
+    <div class="block mat-elevation-z5" matRipple [matTooltip]="item.tooltip" *ngFor="let item of list | async" [ngStyle]="{ 'border': 'none' | borderAdd: [ item, professor ] | async }" (click)="onSelect(item)">
+      
+      <div class="text-container">
+        <p>{{ item?.month }}</p>
+        <p>{{ item?.date }}</p>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <br><br>
+    
+</div>

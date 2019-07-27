@@ -1,0 +1,28 @@
+$offset: 500;
+
+.check path {
+    fill:none;
+    stroke:#2ABA66;
+    stroke-miterlimit:10;
+    stroke-width: 20px;
+    
+    stroke-dasharray: $offset;
+    stroke-dashoffset: $offset;
+    animation: draw 0.5s linear forwards;
+    
+}
+
+svg {
+  overflow: visible;
+  transform: translateY(-3px);
+}
+
+@keyframes draw {
+    from {
+        stroke-linecap: round;
+    }
+    to {
+        stroke-linecap: round;
+        stroke-dashoffset: 0;
+    }
+}

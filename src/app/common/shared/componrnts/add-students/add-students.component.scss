@@ -1,0 +1,30 @@
+
+.mat-raised-button {
+  margin-bottom: 16px;
+}
+
+.mat-form-group {
+
+  > .mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-form-array {
+    max-height: 445px - 89px - 89px;
+    min-height: 89px;
+    width: 416px;
+    overflow-y: auto;
+  }
+  
+  .mat-form-field:first-child {
+    margin-right: 8px;
+  }
+  
+  .button-container {
+    display: flex;
+
+    .mat-raised-button {
+      margin: 16px 0 0 auto;
+    }
+  }
+}

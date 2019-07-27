@@ -1,0 +1,42 @@
+
+<div class="content" data-simplebar>
+<!-- <div class="content"> -->
+  
+  <p class="quote">Schedule queue</p>
+  
+  <mat-divider></mat-divider>
+  
+  <mat-accordion [multi]="false">
+    <mat-expansion-panel *ngFor="let day of daysSchedule | sortDaySchedule: scheduleQueue" state="expanded">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ day }}</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card *ngFor="let sched of scheduleQueue | sortSchedule: day | sortScheduleByTime">
+        <mat-card-content>
+          
+          <div class="indicator" [ngStyle]="{ 'background': sched?.indicator | checkIndicator: [ sched, 'color' ] | async }"></div>
+          <div class="text">
+            <p>{{ sched?.course }}</p>
+            <p>{{ sched?.section }} / {{ sched?.room }}</p>
+            <p>{{ sched?.label }}</p>
+          </div>
+          
+          <div class="icon">
+            <button mat-icon-button matTooltip="consultation" (click)="consultation(sched)" *ngIf="sched?.status | checkIndicator: [ sched, 'isShowConsultation' ] | async">
+              <mat-icon>add</mat-icon>
+            </button>
+            <div *ngIf="data.option">
+              <button mat-icon-button *ngIf="sched?.indicator | checkIndicator: [ sched, 'isShowVisibility' ] | async" matTooltip="show consultation list" (click)="onShowList(sched)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </div>
+          </div>
+          
+        </mat-card-content>
+      </mat-card>
+      
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+</div>

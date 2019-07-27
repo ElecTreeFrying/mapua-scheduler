@@ -1,0 +1,38 @@
+
+<button mat-raised-button (click)="addStudent()">ADD STUDENT</button>
+
+<form (ngSubmit)="onSubmit()" (keydown)="onEnter($event)" [formGroup]="studentForm" class="mat-form-group">
+
+  <mat-form-field color="accent" appearance="outline">
+    <mat-label>Group name</mat-label>
+    <input matInput type="text" formControlName="groupname">
+  </mat-form-field>
+
+  <div data-simplebar class="mat-form-array">
+    <div formArrayName="student" *ngFor="let studentControl of formData.controls; let i = index">
+
+      <div [formGroupName]="i">
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>Firstname</mat-label>
+          <input matInput type="text" formControlName="firstname">
+        </mat-form-field>
+        
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>Lastname</mat-label>
+          <input matInput type="text" formControlName="lastname">
+        </mat-form-field>
+      </div>
+
+    </div>
+  </div>
+  
+  <mat-form-field color="accent" appearance="outline">
+    <mat-label>Consultation purpose</mat-label>
+    <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" formControlName="purpose">1600 Amphitheatre Pkway</textarea>
+  </mat-form-field>
+  
+  <div class="button-container">
+    <button mat-raised-button matDialogClose color="accent" (click)="onSubmit()">SAVE</button>
+  </div>
+    
+</form>

@@ -1,0 +1,38 @@
+
+<div class="content" data-simplebar>
+  
+  <p class="quote">Schedule queue</p>
+  
+  <mat-divider></mat-divider>
+  
+  <mat-accordion [multi]="false">
+    <mat-expansion-panel *ngFor="let day of daysSchedule | sortDaySchedule: scheduleQueue">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ day }}</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card *ngFor="let sched of scheduleQueue | sortSchedule: day | sortScheduleByTime; ">
+        <mat-card-content>
+          
+          <div class="text">
+            <p>{{ sched?.course }}</p>
+            <p>{{ sched?.section }} / {{ sched?.room }}</p>
+            <p>{{ sched?.label }}</p>
+          </div>
+          
+          <div class="icon">
+            <button mat-icon-button matTooltip="update schedule" (click)="updateSchedule(sched.pushId)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="remove schedule" (click)="removeSchedule(sched.pushId)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          
+        </mat-card-content>
+      </mat-card>
+      
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+</div>

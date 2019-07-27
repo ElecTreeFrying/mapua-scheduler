@@ -1,0 +1,40 @@
+
+<div class="content">
+  
+  <mat-card>
+    <mat-card-content>
+  
+      <h2 class="quote">Sign in</h2>
+      
+      <form (ngSubmit)="onSubmit()" [formGroup]="signinForm">
+        
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>Email address</mat-label>
+          <input matInput type="email" formControlName="email">
+        </mat-form-field>
+        
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+        
+        <mat-radio-group formControlName="radio" *ngIf="false">
+          <mat-radio-button [value]="true" checked="true">Professor</mat-radio-button>
+          <mat-radio-button [value]="false">Student</mat-radio-button>
+        </mat-radio-group>
+        
+        <p class="link" routerLink="/register">Register</p>
+
+        <div class="button-container">
+          <button mat-raised-button color="accent">LOGIN</button>
+        </div>
+        
+      </form>
+      
+    </mat-card-content>
+    <mat-card-content id="progress" *ngIf="isShowIndicator">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+  
+</div>

@@ -1,0 +1,44 @@
+
+.content {
+  
+  p {
+    margin: 0;
+    color: rgb(99, 99, 99);
+    font-size: 0.75em;
+  }
+  
+  .mat-form-field {
+    margin-right: 16px;
+    width: 120px;
+    
+    &:nth-child(2) {
+      margin-right: 8px;
+      width: 70px;
+    }
+    
+    &:last-child {
+      margin: 0 0 0 8px;
+      width: 70px;
+    }
+  }
+  
+  .noOfMonths {
+    position: absolute;
+    margin-left: 263px;
+    margin-bottom: 500px;
+    
+    .mat-form-field {
+      width: 50px;
+      margin: 0;
+    }
+  }
+  
+  .buttons {
+    margin-top: 8px;
+    display: flex;
+    
+    .mat-raised-button:first-child {
+      margin: 0 8px 0 0;
+    }
+  }
+}
