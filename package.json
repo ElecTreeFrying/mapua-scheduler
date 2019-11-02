@@ -27,7 +27,7 @@
     "chance": "^1.0.18",
     "firebase": "^6.2.4",
     "hammerjs": "^2.0.8",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "moment": "^2.24.0",
     "rxjs": "~6.4.0",
     "simplebar": "^4.1.0",
